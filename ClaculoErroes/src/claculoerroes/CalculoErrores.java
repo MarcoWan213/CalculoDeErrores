@@ -8,8 +8,6 @@ package claculoerroes;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.math.RoundingMode;
-import java.text.NumberFormat;
 
 /**
  *
@@ -30,6 +28,8 @@ public class CalculoErrores extends JFrame {
 
     public CalculoErrores(String titulo) {
         super(titulo);
+        this.setResizable(false);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 250);
 
@@ -56,38 +56,36 @@ public class CalculoErrores extends JFrame {
                 if (desicion == 1) {
 
                     //Calculo de error absoluto
-                    errorAbsoluto = valoVerdadero - valorAprox;                    
-                    errorRelativo = errorAbsoluto/valoVerdadero;
-                    
+                    errorAbsoluto = valoVerdadero - valorAprox;
+                    errorRelativo = errorAbsoluto / valoVerdadero;
+
                     //Truncamiento
-                    errorAbsoluto*=100;
-                    errorAbsoluto=(int)errorAbsoluto;                    
-                    errorAbsoluto= errorAbsoluto/100;
-                    
+                    errorAbsoluto *= 100;
+                    errorAbsoluto = (int) errorAbsoluto;
+                    errorAbsoluto = errorAbsoluto / 100;
+
                     txtEAbsoluto.setText(Double.toString(errorAbsoluto));
-                    
+
                     //Calculo
-                    
-                    
                     //Truncamiento
-                    errorRelativo*=10000;
-                    errorRelativo=(int)errorRelativo;
-                    errorRelativo=errorRelativo/100;
-                    
-                    txtERelativo.setText(Double.toString(errorRelativo)+"%");
+                    errorRelativo *= 10000;
+                    errorRelativo = (int) errorRelativo;
+                    errorRelativo = errorRelativo / 100;
+
+                    txtERelativo.setText(Double.toString(errorRelativo) + "%");
                 }
                 if (desicion == 2) {
                     //Calculo de error absoluto
-                    errorAbsoluto = valoVerdadero - valorAprox;                    
-                    errorRelativo = errorAbsoluto/valoVerdadero;
-                                        
+                    errorAbsoluto = valoVerdadero - valorAprox;
+                    errorRelativo = errorAbsoluto / valoVerdadero;
+
                     txtEAbsoluto.setText(Double.toString(Math.round(errorAbsoluto)));
-                    
-                    errorRelativo*=10000;
-                    errorRelativo=(int)errorRelativo;
-                    errorRelativo=errorRelativo/100;
-                    
-                    txtERelativo.setText(Double.toString(Math.round(errorRelativo))+"%");
+
+                    errorRelativo *= 10000;
+                    errorRelativo = (int) errorRelativo;
+                    errorRelativo = errorRelativo / 100;
+
+                    txtERelativo.setText(Double.toString(Math.round(errorRelativo)) + "%");
                 }
 
             }

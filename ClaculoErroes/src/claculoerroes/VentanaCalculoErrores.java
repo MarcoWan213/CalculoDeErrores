@@ -20,6 +20,8 @@ public class VentanaCalculoErrores extends JFrame {
 
     public VentanaCalculoErrores(String titulo) {
         super(titulo);
+        this.setResizable(false);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(250, 200);
         btnErrores = new JButton("ERRORES");

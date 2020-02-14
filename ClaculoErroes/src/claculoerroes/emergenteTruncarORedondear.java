@@ -16,10 +16,12 @@ import java.awt.event.*;
 public class emergenteTruncarORedondear extends JFrame {
 
     JButton btnTruncar, btnRedondear;
-    int respuesta=1;
+    int respuesta = 1;
 
     public emergenteTruncarORedondear(String titulo) {
         super(titulo);
+        this.setResizable(false);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(200, 150);
         btnTruncar = new JButton("TRUNCAR");
@@ -28,19 +30,19 @@ public class emergenteTruncarORedondear extends JFrame {
         btnTruncar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                respuesta=1;                      
+                respuesta = 1;
                 setVisible(false);
             }
         });
-        
+
         btnRedondear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                respuesta=2;
+                respuesta = 2;
                 setVisible(false);
             }
-        });      
-       
+        });
+
         Container cp = getContentPane();
         cp.add(btnTruncar, BorderLayout.EAST);
         cp.add(btnRedondear, BorderLayout.WEST);

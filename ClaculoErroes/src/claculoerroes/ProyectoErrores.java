@@ -17,10 +17,11 @@ public class ProyectoErrores extends JFrame {
 
     JButton btnTema1;
     VentanaCalculoErrores ventanaErrores = new VentanaCalculoErrores("Calculo de errores opciones");
-    
 
     public ProyectoErrores(String titulo) {
         super(titulo);
+        this.setResizable(false);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(250, 200);
         btnTema1 = new JButton("TEMA 1");
