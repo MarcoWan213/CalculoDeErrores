@@ -53,39 +53,42 @@ public class CalculoErrores extends JFrame {
                 double valorAprox = Double.parseDouble(txtVAproximado.getText());
                 double valoVerdadero = Double.parseDouble(txtVVerdadero.getText());
 
-                if (desicion == 1) {
+                if (txtVAproximado.getText() != null || txtVVerdadero.getText() != null) {
 
-                    //Calculo de error absoluto
-                    errorAbsoluto = valoVerdadero - valorAprox;
-                    errorRelativo = errorAbsoluto / valoVerdadero;
+                    if (desicion == 1) {
 
-                    //Truncamiento
-                    errorAbsoluto *= 100;
-                    errorAbsoluto = (int) errorAbsoluto;
-                    errorAbsoluto = errorAbsoluto / 100;
+                        //Calculo de error absoluto
+                        errorAbsoluto = valoVerdadero - valorAprox;
+                        errorRelativo = errorAbsoluto / valoVerdadero;
 
-                    txtEAbsoluto.setText(Double.toString(errorAbsoluto));
+                        //Truncamiento
+                        errorAbsoluto *= 100;
+                        errorAbsoluto = (int) errorAbsoluto;
+                        errorAbsoluto = errorAbsoluto / 100;
 
-                    //Calculo
-                    //Truncamiento
-                    errorRelativo *= 10000;
-                    errorRelativo = (int) errorRelativo;
-                    errorRelativo = errorRelativo / 100;
+                        txtEAbsoluto.setText(Double.toString(errorAbsoluto));
 
-                    txtERelativo.setText(Double.toString(errorRelativo) + "%");
-                }
-                if (desicion == 2) {
-                    //Calculo de error absoluto
-                    errorAbsoluto = valoVerdadero - valorAprox;
-                    errorRelativo = errorAbsoluto / valoVerdadero;
+                        //Calculo
+                        //Truncamiento
+                        errorRelativo *= 10000;
+                        errorRelativo = (int) errorRelativo;
+                        errorRelativo = errorRelativo / 100;
 
-                    txtEAbsoluto.setText(Double.toString(Math.round(errorAbsoluto)));
+                        txtERelativo.setText(Double.toString(errorRelativo) + "%");
+                    }
+                    if (desicion == 2) {
+                        //Calculo de error absoluto
+                        errorAbsoluto = valoVerdadero - valorAprox;
+                        errorRelativo = errorAbsoluto / valoVerdadero;
 
-                    errorRelativo *= 10000;
-                    errorRelativo = (int) errorRelativo;
-                    errorRelativo = errorRelativo / 100;
+                        txtEAbsoluto.setText(Double.toString(Math.round(errorAbsoluto)));
 
-                    txtERelativo.setText(Double.toString(Math.round(errorRelativo)) + "%");
+                        errorRelativo *= 10000;
+                        errorRelativo = (int) errorRelativo;
+                        errorRelativo = errorRelativo / 100;
+
+                        txtERelativo.setText(Double.toString(Math.round(errorRelativo)) + "%");
+                    }
                 }
 
             }
