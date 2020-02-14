@@ -14,25 +14,24 @@ import java.awt.event.*;
  * @author usuario
  */
 public class CalculoErrores extends JFrame {
-
+    
     JLabel lblVAproximado, lblVVerdadero, lblEAbsoluto, lblERelativo, txtEAbsoluto, txtERelativo;
     JTextField txtVAproximado, txtVVerdadero;
     JButton btnCalcular, btnCancelar;
     int desicion;
     String str1;
-
+    
     double errorAbsoluto, errorRelativo;
-
+    
     emergenteTruncarORedondear vEmergente = new emergenteTruncarORedondear("Truncar o Redondear");
-    //VentanaCalculoErrores vn = new VentanaCalculoErrores("Calculo de errores opciones");
 
     public CalculoErrores(String titulo) {
         super(titulo);
         this.setResizable(false);
-
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 250);
-
+        
         btnCalcular = new JButton("Truncar o Redondear");
         btnCancelar = new JButton("Calcular");
         lblVAproximado = new JLabel("Valor aproximado: ");
@@ -43,18 +42,19 @@ public class CalculoErrores extends JFrame {
         txtERelativo = new JLabel();
         txtVAproximado = new JTextField();
         txtVVerdadero = new JTextField();
-
+        
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 desicion = vEmergente.getRespuesta();
                 str1 = Integer.toString(desicion);
-
+                
                 double valorAprox = Double.parseDouble(txtVAproximado.getText());
                 double valoVerdadero = Double.parseDouble(txtVVerdadero.getText());
-
-                if (txtVAproximado.getText() != null || txtVVerdadero.getText() != null) {
-
+                
+                if (txtVAproximado.getText().isEmpty() || txtVVerdadero.getText().isEmpty()) {                    
+                    JOptionPane.showMessageDialog(null, "Algun campo esta vacio");
+                } else {
                     if (desicion == 1) {
 
                         //Calculo de error absoluto
@@ -65,7 +65,7 @@ public class CalculoErrores extends JFrame {
                         errorAbsoluto *= 100;
                         errorAbsoluto = (int) errorAbsoluto;
                         errorAbsoluto = errorAbsoluto / 100;
-
+                        
                         txtEAbsoluto.setText(Double.toString(errorAbsoluto));
 
                         //Calculo
@@ -73,58 +73,58 @@ public class CalculoErrores extends JFrame {
                         errorRelativo *= 10000;
                         errorRelativo = (int) errorRelativo;
                         errorRelativo = errorRelativo / 100;
-
+                        
                         txtERelativo.setText(Double.toString(errorRelativo) + "%");
                     }
                     if (desicion == 2) {
                         //Calculo de error absoluto
                         errorAbsoluto = valoVerdadero - valorAprox;
                         errorRelativo = errorAbsoluto / valoVerdadero;
-
+                        
                         txtEAbsoluto.setText(Double.toString(Math.round(errorAbsoluto)));
-
+                        
                         errorRelativo *= 10000;
                         errorRelativo = (int) errorRelativo;
                         errorRelativo = errorRelativo / 100;
-
+                        
                         txtERelativo.setText(Double.toString(Math.round(errorRelativo)) + "%");
                     }
                 }
-
+                
             }
         });
-
+        
         btnCalcular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 vEmergente.setVisible(true);
-
+                
             }
         });
-
+        
         JPanel panel1 = new JPanel();
         GridLayout grid1 = new GridLayout(5, 2, 0, 5);
         panel1.setLayout(grid1);
-
+        
         panel1.add(lblVVerdadero);
         panel1.add(txtVVerdadero);
-
+        
         panel1.add(lblVAproximado);
         panel1.add(txtVAproximado);
-
+        
         panel1.add(btnCalcular);
         panel1.add(btnCancelar);
-
+        
         panel1.add(lblEAbsoluto);
         panel1.add(txtEAbsoluto);
-
+        
         panel1.add(lblERelativo);
         panel1.add(txtERelativo);
-
+        
         Container cp3 = getContentPane();
         cp3.add(panel1);
-
+        
         setVisible(false);
     }
-
+    
 }
